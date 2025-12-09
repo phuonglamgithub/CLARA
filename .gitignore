@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Model checkpoints (large files)
+checkpoints/*.pth
+checkpoints/*.pt
+*.ckpt
+*.safetensors
+
+# Data (large files - provide download links instead)
+data/MVSA_Single/data/*.jpg
+data/MVSA_Single/data/*.txt
+data/MVSA_Multiple/data/*.jpg
+data/MVSA_Multiple/data/*.txt
+data/HFM/img/*.png
+
+# Logs
+*.log
+logs/
+wandb/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Cache
+.cache/
+*.cache
+.transformers_cache/
+.huggingface/
+
+# Results
+results/*.png
+results/*.pdf
+results/*.json
+
+# Temporary files
+*.tmp
+*.bak
+*~
