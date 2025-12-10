@@ -20,15 +20,14 @@
   journal={The Visual Computer},
   year={2025},
   publisher={Springer},
-  note={Under review. Submission ID: 327916a7-2e80-4286-b6c7-91175346a1e7},
+  note={Under review},
   doi={10.5281/zenodo.17862924}
 }
 ```
 
 **Paper Status:**
 - **Journal:** The Visual Computer (Springer)
-- **Status:** Under Review (Resubmission)
-- **Submission ID:** 327916a7-2e80-4286-b6c7-91175346a1e7
+- **Status:** Under Review
 - **Submitted:** December 2025
 
 ---
@@ -42,9 +41,6 @@
 - [Installation](#installation)
 - [Datasets](#datasets)
 - [Pre-trained Models](#pre-trained-models)
-- [Quick Start](#quick-start)
-- [Training](#training)
-- [Evaluation](#evaluation)
 - [Results](#results)
 - [Citation](#citation)
 - [Contact](#contact)
@@ -203,25 +199,33 @@ All datasets are available on Google Drive:
 After downloading, organize datasets as follows:
 
 ```
-CLARA/
-├── data/
-│   ├── MVSA-Single/
-│   │   ├── train/
-│   │   │   ├── images/
-│   │   │   └── annotations.csv
-│   │   ├── val/
-│   │   └── test/
-│   │
-│   ├── MVSA-Multiple/
-│   │   ├── train/
-│   │   ├── val/
-│   │   └── test/
-│   │
-│   └── HFM/
-│       ├── train/
-│       ├── val/
-│       └── test/
+data/
+│
+├── MVSA-Single/                      
+│   ├── images/                       
+│   │   ├── 1.jpg
+│   │   ├── 2.jpg
+│   │   └── ...
+│   └── labelResultAll.txt            
+│
+├── MVSA-Multiple/                    
+│   ├── images/                       
+│   │   ├── 1.jpg
+│   │   ├── 2.jpg
+│   │   └── ...
+│   └── labelResultAll.txt            
+│
+└── HFM/                              
+    ├── image/                        
+    ├── train/                        
+    ├── val/                          
+    ├── test/                         
+    └── text/
+        ├── train.txt                
+        ├── val.txt
+        └── test.txt
 ```
+
 
 ### Dataset Statistics
 
@@ -247,7 +251,7 @@ CLARA/
 
 ### Download Model Checkpoints
 
-Pre-trained CLARA models are available on Google Drive:
+Pre-trained CLARA models are available on Google Drive in the `checkpoints/` folder:
 
 🔗 **[Download Link: Model Checkpoints](https://drive.google.com/drive/folders/15Dcqsm1OvJbU9_Ok1ylbK_widCekjK0O)**
 
@@ -276,209 +280,9 @@ CLARA/
 
 ---
 
-## ⚡ Quick Start
-
-### 1. Load Pre-trained Model
-
-```python
-import torch
-from clara import CLARAModel
-from PIL import Image
-
-# Load pre-trained model
-model = CLARAModel.from_pretrained("checkpoints/clara_mvsa_single.pt")
-model.eval()
-
-# Prepare input
-image = Image.open("path/to/image.jpg")
-text = "Your caption here"
-
-# Predict sentiment
-with torch.no_grad():
-    prediction = model.predict(image, text)
-
-print(f"Sentiment: {prediction['label']}")
-print(f"Confidence: {prediction['confidence']:.2%}")
-print(f"Probabilities: {prediction['probs']}")
-```
-
-### 2. Batch Prediction
-
-```python
-from clara import CLARAModel
-from PIL import Image
-
-# Load model
-model = CLARAModel.from_pretrained("checkpoints/clara_mvsa_single.pt")
-
-# Batch data
-images = [Image.open(f"image_{i}.jpg") for i in range(10)]
-texts = ["Caption 1", "Caption 2", ..., "Caption 10"]
-
-# Batch predict
-predictions = model.predict_batch(images, texts, batch_size=8)
-
-for i, pred in enumerate(predictions):
-    print(f"Sample {i}: {pred['label']} ({pred['confidence']:.2%})")
-```
-
-### 3. Evaluate on Test Set
-
-```bash
-# Evaluate MVSA-Single
-python evaluate.py \
-  --model_path checkpoints/clara_mvsa_single.pt \
-  --data_dir data/MVSA-Single \
-  --split test \
-  --output_file results/mvsa_single_results.json
-
-# Evaluate MVSA-Multiple
-python evaluate.py \
-  --model_path checkpoints/clara_mvsa_multi.pt \
-  --data_dir data/MVSA-Multiple \
-  --split test \
-  --output_file results/mvsa_multi_results.json
-
-# Evaluate HFM
-python evaluate.py \
-  --model_path checkpoints/clara_hfm.pt \
-  --data_dir data/HFM \
-  --split test \
-  --output_file results/hfm_results.json
-```
-
----
-
-## 🎓 Training
-
-### Train from Scratch
-
-```bash
-# Train on MVSA-Single
-python train.py \
-  --config configs/clara_mvsa_single.yaml \
-  --data_dir data/MVSA-Single \
-  --output_dir outputs/clara-mvsa-single \
-  --gpu 0
-
-# Train on MVSA-Multiple with oversampling
-python train.py \
-  --config configs/clara_mvsa_multiple.yaml \
-  --data_dir data/MVSA-Multiple \
-  --output_dir outputs/clara-mvsa-multiple \
-  --oversample_negative 9.44 \
-  --gpu 0
-
-# Train on HFM
-python train.py \
-  --config configs/clara_hfm.yaml \
-  --data_dir data/HFM \
-  --output_dir outputs/clara-hfm \
-  --gpu 0
-```
-
-### Training Configuration
-
-Example: `configs/clara_mvsa_single.yaml`
-
-```yaml
-model:
-  vision_encoder: "openai/clip-vit-base-patch16"
-  text_encoder: "microsoft/deberta-v3-base"
-  lora_rank: 8
-  lora_alpha: 16
-  lora_dropout: 0.05
-  num_attention_heads: 8
-  num_attention_layers: 2
-  hidden_dim: 512
-
-training:
-  num_epochs: 50
-  batch_size: 32
-  learning_rate: 2e-5
-  weight_decay: 0.01
-  warmup_ratio: 0.1
-  early_stopping_patience: 10
-  
-optimization:
-  optimizer: "adamw"
-  scheduler: "cosine"
-  max_grad_norm: 1.0
-```
-
-### Multi-GPU Training
-
-```bash
-# Distributed training on 4 GPUs
-python -m torch.distributed.launch \
-  --nproc_per_node=4 \
-  train.py \
-  --config configs/clara_mvsa_single.yaml \
-  --data_dir data/MVSA-Single \
-  --output_dir outputs/clara-mvsa-single-multigpu
-```
-
----
-
-## 📈 Evaluation
-
-### Standard Evaluation
-
-```python
-from clara import CLARAModel, evaluate_model
-
-# Load model
-model = CLARAModel.from_pretrained("checkpoints/clara_mvsa_single.pt")
-
-# Evaluate
-results = evaluate_model(
-    model=model,
-    data_dir="data/MVSA-Single",
-    split="test",
-    batch_size=32
-)
-
-# Print results
-print(f"Accuracy: {results['accuracy']:.2%}")
-print(f"Weighted F1: {results['weighted_f1']:.2%}")
-print(f"Macro F1: {results['macro_f1']:.2%}")
-print("\nPer-class metrics:")
-for label, metrics in results['per_class'].items():
-    print(f"{label}: P={metrics['precision']:.2%}, R={metrics['recall']:.2%}, F1={metrics['f1']:.2%}")
-```
-
-### Generate Confusion Matrix
-
-```python
-from clara.visualization import plot_confusion_matrix
-
-plot_confusion_matrix(
-    model=model,
-    data_dir="data/MVSA-Single",
-    split="test",
-    save_path="results/confusion_matrix_mvsa_single.png"
-)
-```
-
-### Attention Visualization
-
-```python
-from clara.visualization import visualize_attention
-
-# Visualize attention for specific example
-visualize_attention(
-    model=model,
-    image_path="data/MVSA-Single/test/images/example.jpg",
-    text="This is a test caption",
-    save_path="results/attention_visualization.png"
-)
-```
-
----
-
 ## 📸 Results
 
-### Confusion Matrices
+### Confusion Matrices and performance
 
 All confusion matrices and performance visualizations are available in the `results/` folder:
 
@@ -504,8 +308,6 @@ CLARA/
 │   └── per_class_performance.png
 ```
 
----
-
 ## 📖 Citation
 
 If you use CLARA in your research, please cite our paper:
@@ -519,7 +321,7 @@ If you use CLARA in your research, please cite our paper:
   journal={The Visual Computer},
   year={2025},
   publisher={Springer},
-  note={Under review. Submission ID: 327916a7-2e80-4286-b6c7-91175346a1e7},
+  note={Under review},
   url={https://github.com/phuonglamgithub/CLARA}
 }
 ```
@@ -558,7 +360,7 @@ If you use CLARA in your research, please cite our paper:
 ### Support
 
 - **GitHub Issues:** https://github.com/phuonglamgithub/CLARA/issues
-- **Email:** thientk@huit.edu.vn
+- **Email:** lamphuong.ict89@gmail.com; thientk@huit.edu.vn
 
 ---
 
