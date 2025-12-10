@@ -1,3 +1,8 @@
+# ============================================================
+# CLARA .gitignore
+# Prevent committing unnecessary or sensitive files
+# ============================================================
+
 # Python
 __pycache__/
 *.py[cod]
@@ -5,58 +10,136 @@ __pycache__/
 *.so
 .Python
 build/
+develop-eggs/
 dist/
-*.egg-info/
+downloads/
+eggs/
 .eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environments
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+clara_env/
+
+# PyTorch
+*.pt
+*.pth
+*.ckpt
+*.safetensors
 
 # Jupyter Notebook
 .ipynb_checkpoints
+*.ipynb_checkpoints/
 
-# IDEs
+# Dataset Files (Large)
+data/
+datasets/
+*.zip
+*.tar.gz
+*.tar
+*.h5
+*.hdf5
+
+# Model Checkpoints (Large)
+checkpoints/
+*.checkpoint
+models/*.pt
+models/*.pth
+outputs/*/*.pt
+outputs/*/*.pth
+wandb/
+
+# Logs
+logs/
+*.log
+tensorboard/
+runs/
+lightning_logs/
+
+# Results
+results/
+predictions/
+*.csv
+*.json
+*.pkl
+*.pickle
+
+# Images (Except architecture diagram)
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+# Exception: Keep architecture diagram
+!Architect_CLARA.jpg
+!figures/*.png
+!figures/*.jpg
+
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-
-# Virtual environments
-venv/
-env/
-ENV/
-
-# Model checkpoints (large files)
-checkpoints/*.pth
-checkpoints/*.pt
-*.ckpt
-*.safetensors
-
-# Data (large files - provide download links instead)
-data/MVSA_Single/data/*.jpg
-data/MVSA_Single/data/*.txt
-data/MVSA_Multiple/data/*.jpg
-data/MVSA_Multiple/data/*.txt
-data/HFM/img/*.png
-
-# Logs
-*.log
-logs/
-wandb/
+*~
+.DS_Store
 
 # OS
-.DS_Store
 Thumbs.db
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Temporary Files
+tmp/
+temp/
+*.tmp
+*.bak
+
+# Credentials
+.env
+.env.local
+secrets.yaml
+api_keys.txt
+*.key
+*.pem
+
+# Large Model Files
+*.bin
+*.safetensors
+*.msgpack
+*.onnx
 
 # Cache
 .cache/
 *.cache
-.transformers_cache/
-.huggingface/
+.pytest_cache/
 
-# Results
-results/*.png
-results/*.pdf
-results/*.json
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
 
-# Temporary files
-*.tmp
-*.bak
-*~
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Profiling
+*.prof
+*.lprof
