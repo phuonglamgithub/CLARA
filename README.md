@@ -1,6 +1,7 @@
 # CLARA: Enhancing Multimodal Sentiment Analysis via Efficient Vision-Language Fusion
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17862924.svg)](https://doi.org/10.5281/zenodo.17862924)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17889083.svg)](https://doi.org/10.5281/zenodo.17889083)
+[![Release](https://img.shields.io/github/v/release/phuonglamgithub/CLARA)](https://github.com/phuonglamgithub/CLARA/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
@@ -20,8 +21,8 @@
   journal={The Visual Computer},
   year={2025},
   publisher={Springer},
-  note={Under review},
-  doi={10.5281/zenodo.17862924}
+  note={Under Review},
+  doi={10.5281/zenodo.17889083}
 }
 ```
 
@@ -299,13 +300,13 @@ All confusion matrices and performance visualizations are available in the `resu
 
 ```
 CLARA/
-├── results/
-│   ├── confusion_matrix_mvsa_single.png
-│   ├── confusion_matrix_mvsa_multiple.png
-│   ├── confusion_matrix_hfm.png
-│   ├── attention_visualization_samples.png
-│   ├── performance_comparison.png
-│   └── per_class_performance.png
+└──results/
+   ├── confusion_matrix_mvsa_single.png
+   ├── confusion_matrix_mvsa_multiple.png
+   ├── confusion_matrix_hfm.png
+   ├── attention_visualization_samples.png
+   ├── performance_comparison.png
+   └── per_class_performance.png
 ```
 
 ## 📖 Citation
@@ -334,7 +335,7 @@ If you use CLARA in your research, please cite our paper:
   title={CLARA: Official Implementation},
   year={2025},
   publisher={Zenodo},
-  doi={10.5281/zenodo.17862924},
+  doi={10.5281/zenodo.17889083},
   url={https://github.com/phuonglamgithub/CLARA}
 }
 ```
@@ -374,7 +375,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **GitHub:** https://github.com/phuonglamgithub/CLARA
 - **Paper:** The Visual Computer (Under Review)
-- **DOI:** https://doi.org/10.5281/zenodo.17862924
+- **DOI:** https://doi.org/10.5281/zenodo.17889083
 - **Datasets & Models:** https://drive.google.com/drive/folders/15Dcqsm1OvJbU9_Ok1ylbK_widCekjK0O
 
 ---
