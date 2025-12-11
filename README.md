@@ -1,6 +1,7 @@
 # CLARA: Enhancing Multimodal Sentiment Analysis via Efficient Vision-Language Fusion
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17889083.svg)](https://doi.org/10.5281/zenodo.17889083)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17862924.svg)](https://doi.org/10.5281/zenodo.17862924)
+[![Latest Release](https://zenodo.org/badge/DOI/10.5281/zenodo.17889083.svg)](https://doi.org/10.5281/zenodo.17889083)
 [![Release](https://img.shields.io/github/v/release/phuonglamgithub/CLARA)](https://github.com/phuonglamgithub/CLARA/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
@@ -311,10 +312,9 @@ CLARA/
 
 ## 📖 Citation
 
-If you use CLARA in your research, please cite our paper:
+If you use this code or models in your research, please cite:
 
 ### Paper Citation
-
 ```bibtex
 @article{lam2025clara,
   title={CLARA: Enhancing Multimodal Sentiment Analysis via Efficient Vision-Language Fusion},
@@ -322,19 +322,19 @@ If you use CLARA in your research, please cite our paper:
   journal={The Visual Computer},
   year={2025},
   publisher={Springer},
-  note={Under review},
-  url={https://github.com/phuonglamgithub/CLARA}
+  note={Under Review},
+  doi={10.5281/zenodo.17862924}
 }
 ```
 
 ### Code Citation
-
 ```bibtex
 @software{lam2025clara_code,
+  title={CLARA: Implementation},
   author={Lam, Phuong and Phan, Tuoi Thi and Tran, Thien Khai},
-  title={CLARA: Official Implementation},
   year={2025},
   publisher={Zenodo},
+  version={v1.1.0},
   doi={10.5281/zenodo.17889083},
   url={https://github.com/phuonglamgithub/CLARA}
 }
@@ -360,8 +360,11 @@ If you use CLARA in your research, please cite our paper:
 
 ### Support
 
+**For questions about the code or paper:**
+
+- **Primary Contact:** thientk@huit.edu.vn (Thien Khai Tran)
+- **Secondary Contact:** lamphuong.ict89@gmail.com (Phuong Lam)
 - **GitHub Issues:** https://github.com/phuonglamgithub/CLARA/issues
-- **Email:** lamphuong.ict89@gmail.com; thientk@huit.edu.vn
 
 ---
 
@@ -371,12 +374,29 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 🔗 Links
+## 🔗 Links & Resources
 
-- **GitHub:** https://github.com/phuonglamgithub/CLARA
-- **Paper:** The Visual Computer (Under Review)
-- **DOI:** https://doi.org/10.5281/zenodo.17889083
-- **Datasets & Models:** https://drive.google.com/drive/folders/15Dcqsm1OvJbU9_Ok1ylbK_widCekjK0O
+### Repository & Archives
+
+- **GitHub Repository:** https://github.com/phuonglamgithub/CLARA
+- **Zenodo (All Versions):** https://doi.org/10.5281/zenodo.17862924 *(Concept DOI - always points to latest)*
+- **Zenodo (v1.1.0 Specific):** https://doi.org/10.5281/zenodo.17889083 *(Version DOI - permanent link)*
+- **Zenodo (v1.0.0 Specific):** https://doi.org/10.5281/zenodo.17862925 *(Initial release)*
+
+### External Resources
+
+- **Model Checkpoints:** [Google Drive](https://drive.google.com/drive/folders/15Dcqsm1OvJbU9_Ok1ylbK_widCekjK0O) (~255 MB)
+- **Datasets:** [Google Drive](https://drive.google.com/drive/folders/15Dcqsm1OvJbU9_Ok1ylbK_widCekjK0O) (~5.5 GB)
+- **Paper:** Under review at The Visual Computer (Springer)
+
+### Documentation
+
+- **Setup Guide:** [SETUP_GUIDE.md](SETUP_GUIDE.md)
+- **Complete Guide:** [COMPLETE_GUIDE.md](COMPLETE_GUIDE.md)
+- **API Documentation:** [docs/README.md](docs/README.md)
+- **Data Formats:** [data/README.md](data/README.md)
+- **Model Details:** [checkpoints/README.md](checkpoints/README.md)
+- **Notebook Guide:** [notebooks/README.md](notebooks/README.md)
 
 ---
 
